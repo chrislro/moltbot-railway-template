@@ -4,12 +4,12 @@ FROM node:22-bookworm AS openclaw-build
 # Dependencies needed for openclaw build
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    git \
-    ca-certificates \
-    curl \
-    python3 \
-    make \
-    g++ \
+  git \
+  ca-certificates \
+  curl \
+  python3 \
+  make \
+  g++ \
   && rm -rf /var/lib/apt/lists/*
 
 # Install Bun (openclaw build uses it)
@@ -28,8 +28,8 @@ RUN git clone --depth 1 --branch "${OPENCLAW_GIT_REF}" https://github.com/opencl
 # Apply to all extension package.json files to handle workspace protocol (workspace:*).
 RUN set -eux; \
   find ./extensions -name 'package.json' -type f | while read -r f; do \
-    sed -i -E 's/"openclaw"[[:space:]]*:[[:space:]]*">=[^"]+"/"openclaw": "*"/g' "$f"; \
-    sed -i -E 's/"openclaw"[[:space:]]*:[[:space:]]*"workspace:[^"]+"/"openclaw": "*"/g' "$f"; \
+  sed -i -E 's/"openclaw"[[:space:]]*:[[:space:]]*">=[^"]+"/"openclaw": "*"/g' "$f"; \
+  sed -i -E 's/"openclaw"[[:space:]]*:[[:space:]]*"workspace:[^"]+"/"openclaw": "*"/g' "$f"; \
   done
 
 RUN pnpm install --no-frozen-lockfile
@@ -44,18 +44,18 @@ ENV NODE_ENV=production
 
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    ca-certificates \
-    curl \
-    build-essential \
-    gcc \
-    g++ \
-    make \
-    procps \
-    file \
-    git \
-    python3 \
-    pkg-config \
-    sudo \
+  ca-certificates \
+  curl \
+  build-essential \
+  gcc \
+  g++ \
+  make \
+  procps \
+  file \
+  git \
+  python3 \
+  pkg-config \
+  sudo \
   && rm -rf /var/lib/apt/lists/*
 
 # Install Homebrew (must run as non-root user)
@@ -85,7 +85,7 @@ RUN printf '%s\n' '#!/usr/bin/env bash' 'exec node /openclaw/dist/entry.js "$@"'
   && chmod +x /usr/local/bin/openclaw
 
 COPY src ./src
-COPY skills ./skills
+COPY .opencode ./.opencode
 
 ENV PORT=8080
 EXPOSE 8080
