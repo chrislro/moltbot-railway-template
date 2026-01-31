@@ -1,9 +1,11 @@
 {
     "model": "openai/gpt-4o",
-    "mcpServers": {
-        "caldav": {
-            "url": "http://100.88.191.63:3333/sse",
-            "transport": "sse"
+    "mcp": {
+        "mcpServers": {
+            "caldav": {
+                "url": "http://100.88.191.63:3333/sse",
+                "transport": "sse"
+            }
         }
     }
 }
