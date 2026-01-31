@@ -86,6 +86,8 @@ RUN printf '%s\n' '#!/usr/bin/env bash' 'exec node /openclaw/dist/entry.js "$@"'
 
 COPY src ./src
 COPY .opencode ./.opencode
+# Also copy to root skills folder as backup discovery path
+COPY .opencode/skills ./skills
 
 ENV PORT=8080
 EXPOSE 8080
