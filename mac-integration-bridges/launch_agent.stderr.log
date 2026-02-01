@@ -1,0 +1,2 @@
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: Operation not permitted
+/bin/bash: /Users/admin/Documents/Python Programs/Stuff/Jarvis-on-github/moltbot-railway-template/mac-integration-bridges/start_bridges.sh: No such file or directory
